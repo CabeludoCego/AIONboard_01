@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head style="background-color:#0d0d0d; color:white;">
+  <meta charset="UTF-8" />
+  <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0">
+  <title>Manager Index</title>
+</head>
+
+<body style="background-color:#0d0d0d; color:white;">
+   <h1> Seção do Gerente </h1>
+
+   <a href="{% url 'index' %}"> Voltar </a>
+   <hr>
+
+   
+
+   <div>
+    <a href="{% url 'manager:list' %}"> 
+      <h4> Listar Produtos </h4>
+    </a>
+   </div>
+
+   <div>
+    <a href="{% url 'manager:add' %}"> 
+      <h4> Adicionar Produto </h4>
+    </a>
+   </div>
+  
+
+</body>
+
+</html>

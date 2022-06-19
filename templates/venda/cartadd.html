@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+{% load static %}
+
+<head style="background-color:#0d0d0d; color:white;">
+  <meta charset="UTF-8" />
+  <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0">
+  <title> Detalhes do Produto </title>
+</head>
+
+<body style="background-color:#0d0d0d; color:white;">
+   <h1> Detalhes da Compra </h1>
+
+    <div>
+    <a href="{% url 'manager:cart' %}"> Meu Carrinho </a>
+    </div>
+    <div>
+    <a href="{% url 'manager:catalog' %}"> Voltar </a>
+    </div> 
+    
+   <hr>
+   
+   
+   <div>
+      <h4> Detalhes do produto </h4>
+
+      <div class="container">
+        <div class="row">
+      
+            <div class="col-lg-9">
+              {% comment %} produto ou object funcionam {% endcomment %}
+                <h1>{{ product }}</h1>  
+            </div>
+        </div>
+    </div>
+
+
+
+   </div>
+  
+
+</body>
+
+</html>

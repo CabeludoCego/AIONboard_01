@@ -1,0 +1,10 @@
+asgiref==3.5.2
+Django==3.2.8
+django-localflavor==3.1
+django-widget-tweaks==1.4.12
+Pillow==9.1.1
+psycopg2==2.9.3
+python-stdnum==1.17
+pytz==2022.1
+sqlparse==0.4.2
+typing-extensions==4.2.0

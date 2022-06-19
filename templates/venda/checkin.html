@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head style="background-color:#0d0d0d; color:white;">
+  <meta charset="UTF-8" />
+  <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0">
+  <title>Página de Compra</title>
+</head>
+
+<body style="background-color:#0d0d0d; color:white;">
+  <h1> Check-in da Venda </h1>
+
+  {% if messages %}
+   {% for message in messages %}
+    <div class="success">
+      {{ message }}
+    </div>
+   {% endfor %}
+   {% endif %}
+
+  <div>
+    <a href="{% url 'manager:cart' %}"> Meu Carrinho </a>
+  </div>
+  <div>
+    <a href="{% url 'manager:catalog' %}"> Voltar ao Catálogo </a>
+  </div> 
+    
+  <hr>
+
+  
+  <form action="." method="post">
+    {% csrf_token %}
+    {{ form.as_p }} 
+     {% comment %} <input type="reset" value="Apagar dados" href="{% url 'manager:catalog' %}"> {% endcomment %}
+     <input type="submit" value="Confirmar compra" href="{% url 'manager:final' %}"> 
+     
+  </form> 
+  <p> Valor a pagar: R$ {{ valorCarrinho }}0 </p>
+  
+  {% comment %} {{ cart.get_preco_total }} {% endcomment %}
+  {% comment %} {% if cart %} 
+    <p> Texto </p>
+    <div> 
+
+      <ul>
+        {% for item in cart %}
+         {% with product=item.produto %}}
+          <li> {{item.produto}} </li>
+            <ul> 
+              <div>   
+                <li> {{item.quantidade}} x {{item.preco}} = {{item.preco_total}}</li>
+                {% comment %} <li>Preço: {{item.preco_total}}</li> {% endcomment %}
+              {% comment %} </div>
+            </ul>
+      {% endwith %} 
+        {% endfor %}
+
+      </ul>
+      <p>
+        {{ cart.get_preco_total }}
+      </p>
+    </div> 
+ {% endif %} {% endcomment %}
+    
+{% comment %} {% with product=item.produto %} {% endcomment %}
+            {% comment %} <p class="align-middle"> {{ item.produto }}</p>
+            <p class="align-middle"> {{ item.quantidade }}</p> {% endcomment %}
+          {% comment %} {% endwith %} {% endcomment %}
+    
+
+   {% comment %} <p> 
+
+   </p> {% endcomment %}
+
+
+   <p class="text-right">
+    <a class=" btn btn-primary" href="{% url 'manager:catalog' %}">
+        Continuar comprando
+    </a>
+
+  </p>
+
+
+</body>
+
+</html>

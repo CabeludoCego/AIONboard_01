@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head style="background-color:#0d0d0d; color:white;">
+  <meta charset="UTF-8" />
+  <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0">
+  <title>Lista de Produtos</title>
+</head>
+
+<body style="background-color:#0d0d0d; color:white;">
+   <h1> Lista de Itens </h1>
+
+   <a href="{% url 'manager:index' %}"> Voltar </a>
+ 
+   {% if messages %}
+   {% for message in messages %}
+    <div class="success">
+      {{ message }}
+    </div>
+   {% endfor %}
+   {% endif %}
+
+   <ul>
+    {% for produto in object_list %}
+      <li> {{produto.nome}} 
+        <a href="{% url 'manager:att' produto.id %}"> 
+        Editar</a> 
+      </li>
+
+        <ul> 
+          <div>   
+            <li>Preço unitário: {{produto.preco_unitario}}</li>
+            <li>Estoque atual: {{produto.estoque}}</li> 
+          </div>
+        </ul>
+    {% endfor %}
+   </ul>
+   
+   
+</body>
+
+</html>

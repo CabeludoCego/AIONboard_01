@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+{% load static %}
+{% comment %} {% load media %} {% endcomment %}
+
+<head style="background-color:#0d0d0d; color:white;">
+  <meta charset="UTF-8" />
+  <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0">
+  <title> Indice - Eh-Loja </title>
+</head>
+
+<body style="background-color:#0d0d0d; color:white;">
+   <h1> Loja Virtual: Eh-Loja </h1>
+
+   <div>
+    <a href="{% url 'manager:cart' %}"> Meu Carrinho </a>
+    </div>
+    <div>
+    <a href="{% url 'index' %}"> Voltar </a>
+    </div> 
+    
+   <hr>
+   
+   
+   <div>
+      <h4> Lista de Produtos </h4>
+      <ul>
+        {% for produto in object_list %}
+          {% if produto.disponivel == True %}
+            <hr>
+            <li> {{produto.nome}} </li>
+            <a href="{% url 'manager:produto' produto.id %}">
+            Comprar
+            </a> 
+              {% comment %} <a href="{% url 'manager:att' pk=produto.id %}">  Comprar </a>  {% endcomment %}
+              <ul> 
+                <div>   
+                  <li> 
+                    <div>
+                    {% if produto.imagem %}
+                      {% comment %} <img class="container-fluid" src="../../media/imgs/{{produto.image}}" alt="" style="width:100px;height:100px;"> {% endcomment %}
+                      <img class="card-img-top" src="../..{{produto.imagem.url}}" alt="" style="width:100px;height:100px;">
+                    {% else %}
+                      <img class="card-img-top" src="{% static 'default.png' %}" alt="">
+                    {% endif %}
+                    </div>
+                  </li>
+                  {% comment %} <li>Imagem: {{produto.imagem}}</li> {% endcomment %}
+                  <li>Preço: {{produto.preco_unitario}}</li>
+                  <li>Estoque atual: {{produto.estoque}}</li> 
+                </div>
+              </ul>
+          {% endif %}
+        {% endfor %}
+       </ul>
+
+   </div>
+  
+
+</body>
+
+</html>

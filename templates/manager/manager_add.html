@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head style="background-color:#0d0d0d; color:white;">
+  <meta charset="UTF-8" />
+  <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Produto</title>
+</head>
+
+<body style="background-color:#0d0d0d; color:white;">
+   <h1> Cadastrar Produto </h1>
+
+   {% if messages %}
+   {% for message in messages %}
+    <div class="success">
+      {{ message }}
+    </div>
+   {% endfor %}
+   {% endif %}
+
+   <form action="." method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Salvar">
+    <input type="reset" value="Voltar" onclick="location.href='{% url 'manager:index' %}'">
+  </form>
+</body>
+
+</html>
